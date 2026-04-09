@@ -1,95 +1,184 @@
-body {
+:root {
+  --bg: #111214;
+  --bg2: #1a1b1e;
+  --panel: rgba(210, 210, 210, 0.055);
+  --panel-border: rgba(255, 255, 255, 0.14);
+  --text: #ececec;
+  --muted: #c8c8c8;
+  --accent: #d8ff1f;
+}
+
+html, body {
   margin: 0;
-  font-family: Georgia, serif;
-  color: #e6e6e6;
+  padding: 0;
+}
 
-  background-color: #0f0f0f;
+body {
+  color: var(--text);
+  font-family: Georgia, "Times New Roman", serif;
+  background-color: var(--bg);
 
-  /* STRONG VISIBLE GRAIN */
+  /* deliberately strong grain, visible to humans */
   background-image:
+    radial-gradient(circle at 17% 21%, rgba(255,255,255,0.070) 0 2px, transparent 3px),
+    radial-gradient(circle at 72% 38%, rgba(255,255,255,0.060) 0 2px, transparent 3px),
+    radial-gradient(circle at 33% 77%, rgba(255,255,255,0.065) 0 2px, transparent 3px),
     repeating-radial-gradient(
       circle at 0 0,
-      rgba(255,255,255,0.05) 0px,
-      rgba(255,255,255,0.05) 2px,
+      rgba(255,255,255,0.045) 0px,
+      rgba(255,255,255,0.045) 2px,
       transparent 3px,
-      transparent 9px
+      transparent 10px
     ),
     repeating-linear-gradient(
-      45deg,
-      rgba(255,255,255,0.03) 0px,
-      rgba(255,255,255,0.03) 2px,
+      35deg,
+      rgba(255,255,255,0.030) 0px,
+      rgba(255,255,255,0.030) 2px,
       transparent 4px,
-      transparent 10px
-    );
-
-  background-blend-mode: overlay;
+      transparent 12px
+    ),
+    linear-gradient(180deg, #17181b 0%, #111214 100%);
 }
 
 .container {
-  max-width: 800px;
-  margin: auto;
-  padding: 60px 20px;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 54px 22px 88px;
 }
 
 .title {
+  margin: 0;
   text-align: center;
-  font-size: 64px;
-  color: #d6ff00;
-  margin-bottom: 10px;
+  font-size: 5.6rem;
+  line-height: 1;
+  font-weight: 700;
+  color: var(--accent);
+  text-shadow:
+    0 0 10px rgba(216, 255, 31, 0.28),
+    0 0 22px rgba(216, 255, 31, 0.14);
 }
 
 .subtitle {
+  margin-top: 16px;
   text-align: center;
-  letter-spacing: 0.15em;
-  margin-bottom: 40px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #f2f2f2;
 }
 
 .cast {
+  margin-top: 38px;
+  margin-bottom: 48px;
   text-align: center;
-  margin-bottom: 50px;
 }
 
 .cast-title {
-  margin-bottom: 20px;
-  letter-spacing: 0.2em;
+  margin-bottom: 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--accent);
 }
 
 .cast-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 90px;
   justify-content: center;
-  gap: 80px;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.cast-col {
+  text-align: left;
+  font-size: 1.02rem;
+  line-height: 1.6;
+  color: var(--text);
 }
 
 .play {
-  line-height: 1.7;
+  border: 1px solid var(--panel-border);
+  padding: 26px 22px 30px;
+  background: var(--panel);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.03),
+    0 0 0 1px rgba(0,0,0,0.08);
 }
 
 .stage {
+  margin: 0 0 10px;
   font-style: italic;
-  color: #aaa;
-  margin: 18px 0 6px;
+  font-size: 1.04rem;
+  line-height: 1.55;
+  color: #d5d5d5;
+}
+
+.stage-tight {
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 .speaker {
-  margin-top: 18px;
-  letter-spacing: 0.1em;
-  color: #d6ff00;
+  margin-top: 20px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--accent);
 }
 
 .speech {
   margin-top: 4px;
+  font-size: 1.08rem;
+  line-height: 1.58;
+  color: var(--text);
 }
 
 .signature {
-  margin-top: 80px;
+  margin-top: 74px;
   text-align: center;
+  font-size: 0.98rem;
 }
 
 .signature a {
-  color: #888;
+  color: #9b9b9b;
   text-decoration: none;
+  letter-spacing: 0.28em;
 }
 
 .signature a:hover {
-  color: #fff;
+  color: #ffffff;
+}
+
+@media (max-width: 700px) {
+  .container {
+    padding: 36px 16px 60px;
+  }
+
+  .title {
+    font-size: 3.7rem;
+  }
+
+  .subtitle {
+    font-size: 0.98rem;
+    margin-top: 12px;
+  }
+
+  .cast-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    max-width: 320px;
+  }
+
+  .cast-col {
+    text-align: center;
+  }
+
+  .play {
+    padding: 18px 16px 22px;
+  }
+
+  .speaker {
+    margin-top: 16px;
+  }
 }
